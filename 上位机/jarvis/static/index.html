@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>激光成图助手</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7C3AED',
+            secondary: '#3B82F6',
+            accent: '#EC4899',
+            light: '#F3F4F6',
+            dark: '#1F2937'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 50%, #d1ebff 100%);
+      }
+      .chat-bubble-user {
+        border-radius: 18px 18px 4px 18px;
+      }
+      .chat-bubble-ai {
+        border-radius: 18px 18px 18px 4px;
+      }
+      .sidebar-shadow {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+      .hover-lift {
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .hover-lift:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen font-sans text-dark">
+  <div class="container mx-auto px-4 py-6 max-w-7xl">
+    <!-- 标题区域 -->
+    <header class="mb-6">
+      <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+        激光成图助手
+      </h1>
+    </header>
+
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- 左侧边栏 -->
+      <aside class="w-full lg:w-64 shrink-0">
+        <div class="bg-white rounded-xl p-4 sidebar-shadow h-full">
+          <!-- 新建对话按钮 -->
+          <button id="new-chat-btn" class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-4 rounded-lg transition-all mb-6 flex items-center justify-center gap-2 hover-lift">
+            <i class="fa fa-plus-circle"></i>
+            <span>新建对话</span>
+          </button>
+
+          <!-- 历史记录 -->
+          <div class="mb-4">
+            <h2 class="text-sm font-medium text-gray-500 mb-3">历史记录</h2>
+            <ul id="history-list" class="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
+              <!-- 历史记录将通过JavaScript动态生成 -->
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 主内容区域 -->
+      <main class="flex-1">
+        <div class="bg-white rounded-xl p-6 sidebar-shadow h-[calc(100vh-100px)] flex flex-col">
+          <!-- 顶部右侧文字 -->
+          <div class="flex justify-end mb-6">
+            <span class="text-sm text-gray-500 flex items-center gap-1">
+              <i class="fa fa-smile-o text-yellow-500"></i>
+              开心每一天
+            </span>
+          </div>
+
+          <!-- 聊天内容区域 -->
+          <div id="chat-container" class="flex-1 overflow-y-auto pr-2 mb-6 space-y-6">
+            <!-- AI 初始消息 -->
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white shrink-0">
+                <i class="fa fa-robot"></i>
+              </div>
+              <div>
+                <div class="inline-block px-3 py-1 bg-light rounded-full text-xs text-gray-500 mb-1">
+                  激光成图助手
+                </div>
+                <div class="bg-light chat-bubble-ai px-4 py-3 max-w-lg">
+                  <p class="text-gray-700">主人你好，我是你的智能助手，请问今天有什么事需要吗？</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 输入区域 -->
+          <div class="border border-gray-200 rounded-xl p-3 bg-light/50">
+            <div class="flex gap-2">
+              <input id="message-input" type="text"
+                     placeholder="生成描述 描述你想要的图片"
+                     class="flex-1 bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+              <button id="voice-btn" class="p-3 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-light transition-colors" title="按住说话，松开发送">
+                <i class="fa fa-microphone"></i>
+              </button>
+              <button id="upload-btn" class="p-3 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-light transition-colors" title="上传本地图片">
+                <i class="fa fa-upload"></i>
+              </button>
+              <button id="generate-btn" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-all font-medium hover-lift">
+                生成图片
+              </button>
+            </div>
+            <!-- 隐藏的文件输入 -->
+            <input id="file-input" type="file" accept="image/*" style="display: none;">
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- 图片预览模态框 -->
+  <div id="image-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-4xl max-h-[90vh] overflow-hidden">
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 class="text-lg font-semibold">图片预览</h3>
+        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+          <i class="fa fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <img id="modal-image" src="" alt="预览图片" class="max-w-full max-h-[70vh] object-contain">
+      </div>
+      <div class="flex gap-3 p-4 border-t">
+        <button id="confirm-upload" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2">
+          <i class="fa fa-check"></i>
+          确认上传
+        </button>
+        <button id="rotate-btn" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-light transition-colors flex items-center gap-2">
+          <i class="fa fa-rotate-right"></i>
+          旋转30°
+        </button>
+        <button id="download-btn" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-light transition-colors flex items-center gap-2">
+          <i class="fa fa-download"></i>
+          下载图片
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加载指示器 -->
+  <div id="loading-indicator" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 shadow-lg z-50 hidden">
+    <div class="flex items-center gap-3">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+      <span class="text-gray-700">正在生成图片...</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

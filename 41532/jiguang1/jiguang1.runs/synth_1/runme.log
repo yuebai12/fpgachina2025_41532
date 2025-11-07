@@ -1,0 +1,580 @@
+
+*** Running vivado
+    with args -log main.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source main.tcl -notrace
+Command: synth_design -top main -part xc7z020clg400-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 17704 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 412.289 ; gain = 98.996
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:6]
+INFO: [Synth 8-6157] synthesizing module 'key_debounce' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/key_debounce.v:7]
+	Parameter IDLE bound to: 4'b0001 
+	Parameter FILTER0 bound to: 4'b0010 
+	Parameter DOWN bound to: 4'b0100 
+	Parameter FILTER1 bound to: 4'b1000 
+INFO: [Synth 8-6155] done synthesizing module 'key_debounce' (1#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/key_debounce.v:7]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx_image' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:10]
+	Parameter CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter BAUD_RATE bound to: 9600 - type: integer 
+	Parameter BAUD_CNT_MAX bound to: 5208 - type: integer 
+	Parameter BAUD_CNT_HALF bound to: 2604 - type: integer 
+	Parameter UART_IDLE bound to: 2'b00 
+	Parameter UART_START bound to: 2'b01 
+	Parameter UART_DATA bound to: 2'b10 
+	Parameter UART_STOP bound to: 2'b11 
+	Parameter FRAME_IDLE bound to: 3'b000 
+	Parameter FRAME_RECV bound to: 3'b001 
+	Parameter FRAME_DONE bound to: 3'b010 
+INFO: [Synth 8-226] default block is never used [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:96]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx_image' (2#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:10]
+INFO: [Synth 8-6157] synthesizing module 'move_fsm' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:11]
+	Parameter DWELL_TICKS bound to: 50000 - type: integer 
+	Parameter MAX_POWER bound to: 10'b1111111111 
+	Parameter S_IDLE bound to: 3'b000 
+	Parameter S_LATCH bound to: 3'b001 
+	Parameter S_MOVE bound to: 3'b010 
+	Parameter S_FIRE bound to: 3'b011 
+	Parameter S_DONE bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'move_fsm' (3#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:11]
+INFO: [Synth 8-6157] synthesizing module 'stepper_ctrl' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:21]
+	Parameter IDLE bound to: 3'b000 
+	Parameter ENABLE bound to: 3'b001 
+	Parameter SETUP bound to: 3'b010 
+	Parameter MOVE bound to: 3'b011 
+	Parameter DISABLE bound to: 3'b100 
+	Parameter SPEED_DIV bound to: 16'b0000000111110100 
+INFO: [Synth 8-6155] done synthesizing module 'stepper_ctrl' (4#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:21]
+INFO: [Synth 8-6157] synthesizing module 'laser_ctrl' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/laser_ctrl.v:13]
+	Parameter CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter PWM_FREQ bound to: 10000 - type: integer 
+	Parameter PWM_PERIOD bound to: 5000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'pwm_gen' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/pwm_gen.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_gen' (5#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/pwm_gen.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'laser_ctrl' (6#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/laser_ctrl.v:13]
+WARNING: [Synth 8-3848] Net uart_rx in module/entity main does not have driver. [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:139]
+INFO: [Synth 8-6155] done synthesizing module 'main' (7#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:6]
+WARNING: [Synth 8-3331] design move_fsm has unconnected port step_busy
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 468.520 ; gain = 155.227
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin u_rx_image:uart_rx to constant 0 [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:136]
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 468.520 ; gain = 155.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 468.520 ; gain = 155.227
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc]
+Finished Parsing XDC File [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 832.102 ; gain = 0.000
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 832.102 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 832.102 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 832.102 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 832.102 ; gain = 518.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 832.102 ; gain = 518.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 832.102 ; gain = 518.809
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'key_debounce'
+INFO: [Synth 8-5546] ROM "cnt_full" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'uart_state_reg' in module 'uart_rx_image'
+INFO: [Synth 8-802] inferred FSM for state register 'frame_state_reg' in module 'uart_rx_image'
+INFO: [Synth 8-5544] ROM "rx_buf_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[3]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[4]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_buf_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "uart_state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "uart_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "frame_state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "state_n" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "dwell_cnt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'move_fsm'
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:77]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:76]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:204]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:196]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'stepper_ctrl'
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "dir_x" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "busy" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "done" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enable_delay" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                 FILTER0 |                             0010 |                             0010
+                    DOWN |                             0100 |                             0100
+                 FILTER1 |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'state_reg' in module 'key_debounce'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               UART_IDLE |                               00 |                               00
+              UART_START |                               01 |                               01
+               UART_DATA |                               10 |                               10
+               UART_STOP |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'uart_state_reg' using encoding 'sequential' in module 'uart_rx_image'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              FRAME_IDLE |                              001 |                              000
+              FRAME_RECV |                              010 |                              001
+              FRAME_DONE |                              100 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'frame_state_reg' using encoding 'one-hot' in module 'uart_rx_image'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                            00001 |                              000
+                 S_LATCH |                            00010 |                              001
+                  S_MOVE |                            00100 |                              010
+                  S_FIRE |                            01000 |                              011
+                  S_DONE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'move_fsm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                            00001 |                              000
+                  ENABLE |                            00010 |                              001
+                   SETUP |                            00100 |                              010
+                    MOVE |                            01000 |                              011
+                 DISABLE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'stepper_ctrl'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 832.102 ; gain = 518.809
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 2     
+	   3 Input     13 Bit       Adders := 2     
+	   3 Input     12 Bit       Adders := 2     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               16 Bit    Registers := 6     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 9     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 13    
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 50    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   5 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 4     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     13 Bit        Muxes := 3     
+	   5 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 6     
+	   5 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 12    
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 4     
+	   4 Input      3 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 11    
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 32    
+	   5 Input      1 Bit        Muxes := 30    
+	   4 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 12    
+	   7 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module main 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+Module key_debounce 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 4     
+Module uart_rx_image 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 3     
+	                8 Bit    Registers := 11    
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 11    
+	   4 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 12    
+Module move_fsm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	               12 Bit    Registers := 6     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   5 Input     32 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 5     
+Module stepper_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   3 Input     13 Bit       Adders := 2     
+	   3 Input     12 Bit       Adders := 2     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     13 Bit        Muxes := 3     
+	   5 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 6     
+	   5 Input     12 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+	   5 Input      1 Bit        Muxes := 9     
+Module pwm_gen 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "cnt_full" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cnt_full" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cnt_full" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cnt_full" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "uart_state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "dwell_cnt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+DSP Report: Generating DSP pixel_to_power_return0, operation Mode is: (A:0x3ff)*B.
+DSP Report: operator pixel_to_power_return0 is absorbed into DSP pixel_to_power_return0.
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP counter_ccr1, operation Mode is: (A:0x1388)*B.
+DSP Report: operator counter_ccr1 is absorbed into DSP counter_ccr1.
+WARNING: [Synth 8-3331] design move_fsm has unconnected port step_busy
+INFO: [Synth 8-3886] merging instance 'u_stepper/enable_delay_reg[5]' (FDCE) to 'u_stepper/enable_delay_reg[6]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 832.102 ; gain = 518.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping  Report (see note below)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|move_fsm    | (A:0x3ff)*B  | 8      | 10     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|laser_ctrl  | (A:0x1388)*B | 10     | 13     | -      | -      | 23     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:108]
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 873.367 ; gain = 560.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 874.453 ; gain = 561.160
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'u_stepper/enable_delay_reg[6]' (FDCE) to 'u_stepper/enable_delay_reg[7]'
+INFO: [Synth 8-5844] Detected registers with asynchronous reset at DSP/BRAM block boundary. Consider using synchronous reset for optimal packing [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:108]
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   134|
+|3     |DSP48E1 |     2|
+|4     |LUT1    |   104|
+|5     |LUT2    |   280|
+|6     |LUT3    |   124|
+|7     |LUT4    |   153|
+|8     |LUT5    |    78|
+|9     |LUT6    |   180|
+|10    |FDCE    |   513|
+|11    |FDPE    |    27|
+|12    |IBUF    |     6|
+|13    |OBUF    |     6|
++------+--------+------+
+
+Report Instance Areas: 
++------+--------------+---------------+------+
+|      |Instance      |Module         |Cells |
++------+--------------+---------------+------+
+|1     |top           |               |  1608|
+|2     |  u_fsm       |move_fsm       |   480|
+|3     |  u_key_reset |key_debounce   |    76|
+|4     |  u_key_start |key_debounce_0 |    73|
+|5     |  u_key_stop  |key_debounce_1 |    72|
+|6     |  u_key_test  |key_debounce_2 |    72|
+|7     |  u_laser     |laser_ctrl     |   349|
+|8     |    pwm_inst  |pwm_gen        |   168|
+|9     |  u_rx_image  |uart_rx_image  |   220|
+|10    |  u_stepper   |stepper_ctrl   |   249|
++------+--------------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 899.422 ; gain = 222.547
+Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.422 ; gain = 586.129
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 136 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 899.422 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+75 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 899.422 ; gain = 599.176
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 899.422 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/synth_1/main.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 22 10:09:52 2025...

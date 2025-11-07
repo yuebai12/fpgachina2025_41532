@@ -1,0 +1,120 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 22 04:59:43 2025
+# Process ID: 34068
+# Current directory: C:/Users/zhou/Desktop/jiguang1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent32608 C:\Users\zhou\Desktop\jiguang1\jiguang1.xpr
+# Log file: C:/Users/zhou/Desktop/jiguang1/vivado.log
+# Journal file: C:/Users/zhou/Desktop/jiguang1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/zhou/Desktop/jiguang1/jiguang1.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/zhou/Desktop/FPGA¼¤¹âµñ¿Ì»ú/jiguang1' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:07 . Memory (MB): peak = 809.375 ; gain = 202.359
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 20
+[Wed Oct 22 05:01:10 2025] Launched synth_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 20
+[Wed Oct 22 05:02:48 2025] Launched synth_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/synth_1/runme.log
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7z020clg400-2
+Top: main
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 910.188 ; gain = 60.367
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:11]
+INFO: [Synth 8-6157] synthesizing module 'key_debounce' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/key_debounce.v:7]
+	Parameter IDLE bound to: 4'b0001 
+	Parameter FILTER0 bound to: 4'b0010 
+	Parameter DOWN bound to: 4'b0100 
+	Parameter FILTER1 bound to: 4'b1000 
+INFO: [Synth 8-6155] done synthesizing module 'key_debounce' (1#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/key_debounce.v:7]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx_image' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:40]
+	Parameter S_IDLE bound to: 3'b000 
+	Parameter S_RECV bound to: 3'b001 
+	Parameter S_DONE bound to: 3'b010 
+WARNING: [Synth 8-6014] Unused sequential element rx_buf_reg[0] was removed.  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[1] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[2] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[3] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[4] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[5] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[6] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+WARNING: [Synth 8-5788] Register rx_buf_reg[7] in module uart_rx_image is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:94]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx_image' (2#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/uart_rx_image.v:40]
+INFO: [Synth 8-6157] synthesizing module 'move_fsm' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:11]
+	Parameter DWELL_TICKS bound to: 50000 - type: integer 
+	Parameter MAX_POWER bound to: 10'b1111111111 
+	Parameter S_IDLE bound to: 3'b000 
+	Parameter S_LATCH bound to: 3'b001 
+	Parameter S_MOVE bound to: 3'b010 
+	Parameter S_FIRE bound to: 3'b011 
+	Parameter S_DONE bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'move_fsm' (3#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/move_fsm.v:11]
+INFO: [Synth 8-6157] synthesizing module 'stepper_ctrl' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:21]
+	Parameter IDLE bound to: 3'b000 
+	Parameter ENABLE bound to: 3'b001 
+	Parameter SETUP bound to: 3'b010 
+	Parameter MOVE bound to: 3'b011 
+	Parameter DISABLE bound to: 3'b100 
+	Parameter SPEED_DIV bound to: 16'b0000000111110100 
+INFO: [Synth 8-6155] done synthesizing module 'stepper_ctrl' (4#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/stepper_ctrl.v:21]
+INFO: [Synth 8-6157] synthesizing module 'laser_ctrl' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/laser_ctrl.v:13]
+	Parameter CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter PWM_FREQ bound to: 10000 - type: integer 
+	Parameter PWM_PERIOD bound to: 5000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'pwm_gen' [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/pwm_gen.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_gen' (5#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/pwm_gen.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'laser_ctrl' (6#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/laser_ctrl.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'main' (7#1) [C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/sources_1/new/main.v:11]
+WARNING: [Synth 8-3331] design move_fsm has unconnected port step_busy
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 958.438 ; gain = 108.617
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 958.438 ; gain = 108.617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 958.438 ; gain = 108.617
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1305.738 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 1439.988 ; gain = 590.168
+18 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 1439.988 ; gain = 590.168
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 22 05:10:43 2025...

@@ -1,0 +1,177 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 22 05:13:18 2025
+# Process ID: 15720
+# Current directory: C:/Users/zhou/Desktop/jiguang1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24264 C:\Users\zhou\Desktop\jiguang1\jiguang1.xpr
+# Log file: C:/Users/zhou/Desktop/jiguang1/vivado.log
+# Journal file: C:/Users/zhou/Desktop/jiguang1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/zhou/Desktop/jiguang1/jiguang1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:07 . Memory (MB): peak = 817.660 ; gain = 202.844
+update_compile_order -fileset sources_1
+launch_runs impl_1 -jobs 20
+[Wed Oct 22 05:15:11 2025] Launched impl_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 132 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z020clg400-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.217 . Memory (MB): peak = 1084.152 ; gain = 2.109
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.219 . Memory (MB): peak = 1084.152 ; gain = 2.109
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1084.203 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 1252.555 ; gain = 432.332
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+set_property IOSTANDARD LVCMOS33 [get_ports [list {rx_byte[7]} {rx_byte[6]} {rx_byte[5]} {rx_byte[4]} {rx_byte[3]} {rx_byte[2]} {rx_byte[1]} {rx_byte[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list emergency_stop]]
+set_property IOSTANDARD {  } [get_ports [list key_reset]]
+ERROR: [Common 17-69] Command failed: Invalid I/O Standard '  '. Default I/O Standard is used instead
+set_property IOSTANDARD LVCMOS33 [get_ports [list emergency_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_start]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_test]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list laser_pwm_out]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset_n]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rx_done]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rx_done]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list sys_busy]]
+reset_run synth_1
+launch_runs synth_1 -jobs 20
+[Wed Oct 22 09:43:54 2025] Launched synth_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/synth_1/runme.log
+close_design
+launch_runs impl_1 -jobs 20
+[Wed Oct 22 09:44:32 2025] Launched impl_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 136 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.231 . Memory (MB): peak = 1900.566 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.231 . Memory (MB): peak = 1900.566 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1900.566 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_start]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_test]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list laser_pwm_out]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_dir]]
+set_property IOSTANDARD LVCMOS25 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset_n]]
+place_ports clk U18
+place_ports key_reset T19
+startgroup
+set_property package_pin "" [get_ports [list  key_reset]]
+place_ports reset_n T19
+endgroup
+place_ports key_reset L14
+place_ports key_start L15
+place_ports key_stop K14
+place_ports key_test J14
+place_ports laser_pwm_out H15
+place_ports motor_en G15
+place_ports motor_x_dir F16
+place_ports motor_x_step F17
+place_ports motor_y_dir E17
+place_ports motor_y_step E18
+file mkdir C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new
+close [ open C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc w ]
+add_files -fileset constrs_1 C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc
+set_property target_constrs_file C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc [current_fileset -constrset]
+save_constraints -force
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2142.922 ; gain = 0.000
+reset_run synth_1
+launch_runs impl_1 -jobs 20
+[Wed Oct 22 10:09:08 2025] Launched synth_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/synth_1/runme.log
+[Wed Oct 22 10:09:08 2025] Launched impl_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/runme.log
+refresh_design
+INFO: [Netlist 29-17] Analyzing 136 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.199 . Memory (MB): peak = 2152.773 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.199 . Memory (MB): peak = 2152.773 ; gain = 0.000
+refresh_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2152.773 ; gain = 7.730
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+launch_runs impl_1 -to_step write_bitstream -jobs 20
+[Wed Oct 22 10:13:40 2025] Launched impl_1...
+Run output will be captured here: C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/C305AC7BABCD
+open_hw_target: Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 3303.043 ; gain = 946.500
+set_property PROGRAM.FILE {C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/main.bit} [get_hw_devices xc7z020_1]
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1435] Device xc7z020 (JTAG device index = 1) is not programmed (DONE status = 0).
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/main.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+ERROR: [Labtools 27-2269] No devices detected on target localhost:3121/xilinx_tcf/Digilent/C305AC7BABCD.
+Check cable connectivity and that the target board is powered up then
+use the disconnect_hw_server and connect_hw_server to re-register this hardware target.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/C305AC7BABCD
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 22 12:34:05 2025...

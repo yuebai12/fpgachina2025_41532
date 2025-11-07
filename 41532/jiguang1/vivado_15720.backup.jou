@@ -1,0 +1,94 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 22 05:13:18 2025
+# Process ID: 15720
+# Current directory: C:/Users/zhou/Desktop/jiguang1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24264 C:\Users\zhou\Desktop\jiguang1\jiguang1.xpr
+# Log file: C:/Users/zhou/Desktop/jiguang1/vivado.log
+# Journal file: C:/Users/zhou/Desktop/jiguang1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/zhou/Desktop/jiguang1/jiguang1.xpr
+update_compile_order -fileset sources_1
+launch_runs impl_1 -jobs 20
+wait_on_run impl_1
+open_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {rx_byte[7]} {rx_byte[6]} {rx_byte[5]} {rx_byte[4]} {rx_byte[3]} {rx_byte[2]} {rx_byte[1]} {rx_byte[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list emergency_stop]]
+set_property IOSTANDARD {  } [get_ports [list key_reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list emergency_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_start]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_test]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list laser_pwm_out]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset_n]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rx_done]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rx_done]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list sys_busy]]
+reset_run synth_1
+launch_runs synth_1 -jobs 20
+wait_on_run synth_1
+close_design
+launch_runs impl_1 -jobs 20
+wait_on_run impl_1
+open_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_start]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_stop]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list key_test]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list laser_pwm_out]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_dir]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_x_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_dir]]
+set_property IOSTANDARD LVCMOS25 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list motor_y_step]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset_n]]
+place_ports clk U18
+place_ports key_reset T19
+startgroup
+set_property package_pin "" [get_ports [list  key_reset]]
+place_ports reset_n T19
+endgroup
+place_ports key_reset L14
+place_ports key_start L15
+place_ports key_stop K14
+place_ports key_test J14
+place_ports laser_pwm_out H15
+place_ports motor_en G15
+place_ports motor_x_dir F16
+place_ports motor_x_step F17
+place_ports motor_y_dir E17
+place_ports motor_y_step E18
+file mkdir C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new
+close [ open C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc w ]
+add_files -fileset constrs_1 C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc
+set_property target_constrs_file C:/Users/zhou/Desktop/jiguang1/jiguang1.srcs/constrs_1/new/123.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -jobs 20
+wait_on_run impl_1
+refresh_design
+launch_runs impl_1 -to_step write_bitstream -jobs 20
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/main.bit} [get_hw_devices xc7z020_1]
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/zhou/Desktop/jiguang1/jiguang1.runs/impl_1/main.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单图片上传限制测试</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">单图片上传限制测试</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">功能说明</h2>
+            <div class="space-y-2 text-gray-700">
+                <p>✅ <strong>一次只能上传一张图片</strong> - 上传图片后，再次点击上传按钮会提示已上传</p>
+                <p>✅ <strong>创建新对话可重置状态</strong> - 点击"新建对话"后可以重新上传图片</p>
+                <p>✅ <strong>严格文件验证</strong> - 只允许图片文件，大小限制10MB</p>
+                <p>✅ <strong>智能状态管理</strong> - 自动跟踪上传状态，防止重复上传</p>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">测试区域</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                    <button id="new-chat-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center gap-2">
+                        <i class="fa fa-plus-circle"></i>
+                        新建对话
+                    </button>
+                    <span id="chat-status" class="text-gray-600">未创建对话</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="upload-btn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center gap-2">
+                        <i class="fa fa-upload"></i>
+                        上传图片
+                    </button>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    <span id="upload-status" class="text-gray-600">未上传</span>
+                </div>
+                
+                <div id="image-preview" class="mt-4">
+                    <!-- 图片预览将在这里显示 -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">测试日志</h2>
+            <div id="test-log" class="bg-gray-50 p-4 rounded max-h-60 overflow-y-auto">
+                <p class="text-gray-500">等待测试...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 模拟单图片上传限制功能
+        class SingleImageUploadTester {
+            constructor() {
+                this.hasUploadedImage = false;
+                this.currentChatId = null;
+                this.initElements();
+                this.initEventListeners();
+            }
+
+            initElements() {
+                this.newChatBtn = document.getElementById('new-chat-btn');
+                this.uploadBtn = document.getElementById('upload-btn');
+                this.fileInput = document.getElementById('file-input');
+                this.chatStatus = document.getElementById('chat-status');
+                this.uploadStatus = document.getElementById('upload-status');
+                this.imagePreview = document.getElementById('image-preview');
+                this.testLog = document.getElementById('test-log');
+            }
+
+            initEventListeners() {
+                this.newChatBtn.addEventListener('click', () => this.createNewChat());
+                this.uploadBtn.addEventListener('click', () => this.handleUploadClick());
+                this.fileInput.addEventListener('change', (e) => this.handleFileUpload(e));
+            }
+
+            createNewChat() {
+                this.currentChatId = 'chat_' + Date.now();
+                this.hasUploadedImage = false;
+                this.chatStatus.textContent = '✅ 对话已创建';
+                this.chatStatus.className = 'text-green-600';
+                this.uploadStatus.textContent = '未上传';
+                this.uploadStatus.className = 'text-gray-600';
+                this.imagePreview.innerHTML = '';
+                this.addLog('🆕 新对话已创建，可以上传图片');
+            }
+
+            handleUploadClick() {
+                if (!this.currentChatId) {
+                    this.addLog('❌ 请先创建对话');
+                    this.showToast('请先创建对话', 'error');
+                    return;
+                }
+
+                if (this.hasUploadedImage) {
+                    this.addLog('⚠️ 已上传图片，请先创建新对话');
+                    this.showToast('已上传图片，请先创建新对话', 'warning');
+                    return;
+                }
+
+                this.fileInput.click();
+            }
+
+            handleFileUpload(event) {
+                const files = event.target.files;
+                
+                if (!files || files.length === 0) {
+                    return;
+                }
+
+                if (files.length > 1) {
+                    this.addLog('❌ 选择了多张图片，只允许一张');
+                    this.showToast('只能选择一张图片', 'error');
+                    this.fileInput.value = '';
+                    return;
+                }
+
+                if (this.hasUploadedImage) {
+                    this.addLog('❌ 已上传图片，无法再次上传');
+                    this.showToast('已上传图片，请先创建新对话', 'warning');
+                    this.fileInput.value = '';
+                    return;
+                }
+
+                const file = files[0];
+
+                if (!file.type.startsWith('image/')) {
+                    this.addLog('❌ 文件类型不正确');
+                    this.showToast('请选择图片文件', 'error');
+                    this.fileInput.value = '';
+                    return;
+                }
+
+                if (file.size > 10 * 1024 * 1024) {
+                    this.addLog('❌ 文件过大');
+                    this.showToast('文件过大，请选择小于10MB的图片', 'error');
+                    this.fileInput.value = '';
+                    return;
+                }
+
+                // 上传成功
+                this.hasUploadedImage = true;
+                this.uploadStatus.textContent = '✅ 已上传';
+                this.uploadStatus.className = 'text-green-600';
+                this.addLog(`✅ 图片上传成功: ${file.name}`);
+
+                // 显示图片预览
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.imagePreview.innerHTML = `
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold mb-2">上传的图片</h3>
+                            <img src="${e.target.result}" class="max-w-full max-h-80 object-contain border rounded shadow-lg mx-auto" alt="上传的图片">
+                            <p class="text-sm text-gray-600 mt-2">文件名: ${file.name}</p>
+                        </div>
+                    `;
+                };
+                reader.readAsDataURL(file);
+
+                // 测试再次上传
+                setTimeout(() => {
+                    this.addLog('🧪 测试：尝试再次上传图片...');
+                    this.handleUploadClick();
+                }, 2000);
+            }
+
+            addLog(message) {
+                const logEntry = document.createElement('div');
+                logEntry.className = 'mb-1 text-sm';
+                logEntry.innerHTML = `<span class="text-gray-500">[${new Date().toLocaleTimeString()}]</span> ${message}`;
+                this.testLog.appendChild(logEntry);
+                this.testLog.scrollTop = this.testLog.scrollHeight;
+            }
+
+            showToast(message, type) {
+                // 简单的提示实现
+                const toast = document.createElement('div');
+                toast.className = `fixed top-4 right-4 z-50 px-4 py-3 rounded-lg shadow-lg text-white max-w-sm transition-all duration-300 transform translate-x-full`;
+                
+                if (type === 'error') {
+                    toast.classList.add('bg-red-500');
+                } else if (type === 'warning') {
+                    toast.classList.add('bg-yellow-500');
+                } else {
+                    toast.classList.add('bg-blue-500');
+                }
+                
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-x-full');
+                }, 100);
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        if (document.body.contains(toast)) {
+                            document.body.removeChild(toast);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            const tester = new SingleImageUploadTester();
+            tester.addLog('🚀 单图片上传限制测试页面已加载');
+            tester.addLog('💡 请先点击"新建对话"，然后测试上传功能');
+        });
+    </script>
+</body>
+</html>

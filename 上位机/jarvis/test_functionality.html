@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能测试页面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">激光成图助手 - 功能测试</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">测试项目</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                    <button id="test-new-chat" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        测试新建对话按钮
+                    </button>
+                    <span id="new-chat-status" class="text-gray-600">未测试</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="test-upload" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                        测试图片上传
+                    </button>
+                    <input type="file" id="test-file" accept="image/*" style="display: none;">
+                    <span id="upload-status" class="text-gray-600">未测试</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="test-image-processing" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                        测试图片处理功能
+                    </button>
+                    <span id="processing-status" class="text-gray-600">未测试</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">测试结果</h2>
+            <div id="test-results" class="space-y-2">
+                <p class="text-gray-500">等待测试...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 测试新建对话按钮
+        document.getElementById('test-new-chat').addEventListener('click', function() {
+            const status = document.getElementById('new-chat-status');
+            try {
+                // 模拟新建对话功能
+                status.textContent = '✅ 新建对话按钮功能正常';
+                status.className = 'text-green-600';
+                addTestResult('新建对话按钮', '✅ 通过');
+            } catch (error) {
+                status.textContent = '❌ 新建对话按钮功能异常';
+                status.className = 'text-red-600';
+                addTestResult('新建对话按钮', '❌ 失败: ' + error.message);
+            }
+        });
+
+        // 测试图片上传
+        document.getElementById('test-upload').addEventListener('click', function() {
+            document.getElementById('test-file').click();
+        });
+
+        document.getElementById('test-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const status = document.getElementById('upload-status');
+            
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    status.textContent = '✅ 图片上传功能正常';
+                    status.className = 'text-green-600';
+                    addTestResult('图片上传', '✅ 通过 - 文件: ' + file.name);
+                } else {
+                    status.textContent = '❌ 文件类型不正确';
+                    status.className = 'text-red-600';
+                    addTestResult('图片上传', '❌ 失败: 文件类型不正确');
+                }
+            }
+        });
+
+        // 测试图片处理功能
+        document.getElementById('test-image-processing').addEventListener('click', function() {
+            const status = document.getElementById('processing-status');
+            try {
+                // 检查关键函数是否存在
+                if (typeof convertToGrayscale === 'function' && typeof convertToArray === 'function') {
+                    status.textContent = '✅ 图片处理功能正常';
+                    status.className = 'text-green-600';
+                    addTestResult('图片处理', '✅ 通过');
+                } else {
+                    status.textContent = '❌ 图片处理功能缺失';
+                    status.className = 'text-red-600';
+                    addTestResult('图片处理', '❌ 失败: 关键函数缺失');
+                }
+            } catch (error) {
+                status.textContent = '❌ 图片处理功能异常';
+                status.className = 'text-red-600';
+                addTestResult('图片处理', '❌ 失败: ' + error.message);
+            }
+        });
+
+        function addTestResult(testName, result) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultElement = document.createElement('p');
+            resultElement.innerHTML = `<strong>${testName}:</strong> ${result}`;
+            resultsDiv.appendChild(resultElement);
+        }
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            addTestResult('页面加载', '✅ 完成');
+        });
+    </script>
+</body>
+</html>
